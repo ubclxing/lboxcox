@@ -2,8 +2,7 @@
 % Please edit documentation in R/lboxcox.R
 \name{lbc_train}
 \alias{lbc_train}
-\title{Train the given formula using a Logistic Box-Cox model
-Output of the training process are coefficients from maximum likelihood estimates}
+\title{Train a Logistic Box-Cox model}
 \usage{
 lbc_train(
   formula,
@@ -25,12 +24,20 @@ lbc_train(
 
 \item{svy_lambda_vector}{values of lambda used in training svyglm model. Best model is used for initial coefficient estimates. If init is not NULL this parameter is ignored.}
 
-\item{num_cores}{the number of cores used when finding the best svyglm model. If init is not NULL this parameter is ignored.
-Henningsen, A., Toomet, O. (2011). maxLik: A package for maximum likelihood estimation in R. Computational Statistics, 26(3), 443-458.
-Microsoft Corporation, Weston, S. (2020). foreach: Provides Foreach Looping Construct. R package version 1.5.1.
-Microsoft Corporation, Weston, S. (2020). doParallel: Foreach Parallel Adaptor for the 'parallel' Package. R package version 1.0.16.}
+\item{num_cores}{the number of cores used when finding the best svyglm model. If init is not NULL this parameter is ignored.}
+}
+\value{
+object of class 'maxLik' from the 'maxLik' package. Contains the coefficient estimates that maximizes likelhood among other statistics.
 }
 \description{
-Train the given formula using a Logistic Box-Cox model
-Output of the training process are coefficients from maximum likelihood estimates
+Train the given formula using a Logistic Box-Cox model.
+}
+\note{
+This is reliant on the following work:
+
+Henningsen, A., Toomet, O. (2011). maxLik: A package for maximum likelihood estimation in R. Computational Statistics, 26(3), 443-458.
+
+Microsoft Corporation, Weston, S. (2020). foreach: Provides Foreach Looping Construct. R package version 1.5.1.
+
+Microsoft Corporation, Weston, S. (2020). doParallel: Foreach Parallel Adaptor for the 'parallel' Package. R package version 1.0.16.
 }

@@ -2,8 +2,7 @@
 % Please edit documentation in R/ScoreFun.R
 \name{ScoreFun}
 \alias{ScoreFun}
-\title{This function gives the gradient of the log likelihood of the Box-Cox model.
-Main purpose is to be an input to the maxLik function.}
+\title{Log Likelihood Gradient of Logistic Box-Cox}
 \usage{
 ScoreFun(bb, ixx, iyy, iw, iZZ)
 }
@@ -17,6 +16,9 @@ ScoreFun(bb, ixx, iyy, iw, iZZ)
 \item{iw}{sample weight}
 
 \item{iZZ}{covariates to be incorporated in the model}
+}
+\value{
+the gradient of the log likelihood estimate for the coefficients in `bb`
 }
 \description{
 This function gives the gradient of the log likelihood of the Box-Cox model.

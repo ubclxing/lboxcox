@@ -1,5 +1,9 @@
 ---
-title: "lboxcox_train"
+title: "lboxcox: an R package for the logistic Box-Cox model"
+author:
+  - Li Xing, Kohlton Booth, Xuekui Zhang, Igor Burstyn, Paul Gustafson
+date:
+  - 2022-01-22
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{lboxcox_train}

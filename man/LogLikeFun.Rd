@@ -2,13 +2,12 @@
 % Please edit documentation in R/LogLikeFun.R
 \name{LogLikeFun}
 \alias{LogLikeFun}
-\title{This function gives the log likelihood of the Box-Cox model.
-Main purpose is to be an input to the maxLik function.}
+\title{Log Likelihood of Logistic Box-Cox}
 \usage{
 LogLikeFun(bb, ixx, iyy, iw, iZZ)
 }
 \arguments{
-\item{bb}{initial values for the intercept and slope coefficients}
+\item{bb}{current values for the intercept and slope coefficients}
 
 \item{ixx}{continuous predictor}
 
@@ -17,6 +16,9 @@ LogLikeFun(bb, ixx, iyy, iw, iZZ)
 \item{iw}{sample weight}
 
 \item{iZZ}{covariates to be incorporated in the model}
+}
+\value{
+the log likelihood estimate for the coefficients in `bb`
 }
 \description{
 This function gives the log likelihood of the Box-Cox model.

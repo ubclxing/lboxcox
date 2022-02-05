@@ -3,10 +3,14 @@ Type: Package
 Title: Implementation of Logistic Box-Cox Regression
 Version: 1.0
 Date: 2022-01-15
-Author: Li Xing, Kohlton Booth, Xuekui Zhang, Igor Burstyn, Paul Gustafson
+Authors@R: c(
+    person("Li", "Xing", email="sfulxing@gmail.com", role=c("cre", "aut")),
+    person("Kohlton", "Booth", email="booth.kohl@gmail.com", role="aut"),
+    person("Xuekui", "Zhang", role="aut"),
+    person("Igor", "Burstyn", role="aut"),
+    person("Paul", "Gustafson", role="aut"))
 Maintainer: Li Xing <sfulxing@gmail.com>
-Description: This package gives an implementation of the logistic box-cox model described in:
-    Xing, L., Zhang, X., Burstyn, I., & Gustafson, P. (2021). On logistic Box–Cox regression for flexibly estimating the shape and strength of exposure‐disease relationships. Canadian Journal of Statistics, 49(3), 808-825.
+Description: Implements a logistic box-cox model. This model is fully described in Xing, L. et al. (2021) <doi:10.1002/cjs.11587>.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
