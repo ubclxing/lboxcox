@@ -17,21 +17,9 @@ The `depress` data frame that comes with this package has 8,893 rows and 5 colum
 
 The root directory of the repository is
 ~~~
-	LBC_RPackage
+	lboxcox
 ~~~
-
-Inside the root directory are several files crucial for the development of the project and any ongoing maintence. However, these files should not be included in the package itself. 
-
-<details><summary>LBC_RPackage</summary>
-	
-	├── FunsForOptimal.R  # original file calculating the likelihood, and the derivative of the likelihood
-	├── main.R  # loads package and runs code from it
-	├── n05_08.csv  # csv containing original dataset
-	├── test_old_is_same_as_new.R  # script that compares the output of the old script to the package
-	└── Test.R  # original script containing the model
-</details>
-
-In addition to those files `LBC_RPackage` also contains the folder `lboxcox` which contains the package.
+The folder structure of `lboxcox` is as follows
 
 <details><summary>LBC_RPackage/lboxcox</summary>
 	
