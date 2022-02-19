@@ -15,11 +15,7 @@ The `depress` data frame that comes with this package has 8,893 rows and 5 colum
 ---
 ## Directory Layout
 
-The root directory of the repository is
-~~~
-	lboxcox
-~~~
-The folder structure of `lboxcox` is as follows
+The root directory of the repository is `lboxcox`. The folder structure of `lboxcox` is as follows
 
 <details><summary>lboxcox</summary>
 	
