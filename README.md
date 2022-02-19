@@ -21,7 +21,7 @@ The root directory of the repository is
 ~~~
 The folder structure of `lboxcox` is as follows
 
-<details><summary>LBC_RPackage/lboxcox</summary>
+<details><summary>lboxcox</summary>
 	
 	lboxcox/
 	├── data
