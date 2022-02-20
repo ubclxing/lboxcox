@@ -1,5 +1,7 @@
 [![CRAN status](https://www.r-pkg.org/badges/version/lboxcox)](https://cran.r-project.org/package=lboxcox)
 
+# lboxcox: An Implementation of Logistic Box-Cox Regression
+
 ## Installation
 ```
 install.packages("lboxcox")
