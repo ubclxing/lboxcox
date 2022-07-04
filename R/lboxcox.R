@@ -22,7 +22,28 @@ lbc_train = function(formula, weight_column_name, data, init=NULL, svy_lambda_ve
     init = get_inits_from_model(model)
   }
   processed_data = get_processed_data(formula, data, weight_column_name)
-  maxLik(logLik=LogLikeFun, grad = ScoreFun, start=init, ixx=processed_data$ixx, iyy=processed_data$iyy, iw = processed_data$iw, iZZ = as.matrix(processed_data$iZZ) )
+  result = maxLik(logLik=LogLikeFun, grad = ScoreFun, start=init, ixx=processed_data$ixx, iyy=processed_data$iyy, iw = processed_data$iw, iZZ = as.matrix(processed_data$iZZ) )
+  static_names = c("Beta_0", "Beta_1","Lambda")
+  variable_list = eval(attr(terms(formula), "term.labels"), envir=data)
+  covariate_names = variable_list[-1]
+  names(result$estimate) = c(static_names, covariate_names)
+  result
+}
+
+#' @importFrom survey svydesign svymean
+#' @export
+median_effect = function(formula, weight_column_name, data, trained_model){
+  weight_formula = as.formula(paste("~", weight_column_name))
+
+  primary_predictor_name = eval(attr(terms(formula), "term.labels"), envir=data)[1]
+  m = as.formula(paste0("~log(", primary_predictor_name, ")"))
+
+  mysub = svydesign(ids=~1, weights=weight_formula, data = data)
+  myu = svymean(m, mysub)[1]
+
+  beta1 = trained_model$estimate[2]
+  lambda = trained_model$estimate[3]
+  beta1*exp((lambda - 1)*myu)
 }
 
 #' @importFrom stats terms
