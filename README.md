@@ -1,5 +1,7 @@
 [![CRAN status](https://www.r-pkg.org/badges/version/lboxcox)](https://cran.r-project.org/package=lboxcox)
 
+# lboxcox: An Implementation of Logistic Box-Cox Regression
+
 ## Installation
 ```
 install.packages("lboxcox")
@@ -15,13 +17,9 @@ The `depress` data frame that comes with this package has 8,893 rows and 5 colum
 ---
 ## Directory Layout
 
-The root directory of the repository is
-~~~
-	lboxcox
-~~~
-The folder structure of `lboxcox` is as follows
+The root directory of the repository is `lboxcox`. The folder structure of `lboxcox` is as follows
 
-<details><summary>LBC_RPackage/lboxcox</summary>
+<details><summary>lboxcox</summary>
 	
 	lboxcox/
 	├── data
