@@ -30,7 +30,14 @@ lbc_train = function(formula, weight_column_name, data, init=NULL, svy_lambda_ve
   result
 }
 
+#' @title Calculates the "slope" of the Logistic Box-Cox model
+#' @description Calculates a number that represents the overall gradient measurement between the predictor and log-odds of the risk
+#' @param formula the formula used to train the logistic box-cox model
+#' @param weight_column_name the name of the column in `data` containing the survey weights
+#' @param data dataframe containing the dataset to train on
+#' @param trained_model the already trained model. The output of `lbc_train`
 #' @importFrom survey svydesign svymean
+#' @importFrom MASS ginv
 #' @export
 median_effect = function(formula, weight_column_name, data, trained_model){
   weight_formula = as.formula(paste("~", weight_column_name))
@@ -43,7 +50,19 @@ median_effect = function(formula, weight_column_name, data, trained_model){
 
   beta1 = trained_model$estimate[2]
   lambda = trained_model$estimate[3]
-  beta1*exp((lambda - 1)*myu)
+  median_effect = beta1 * exp((lambda - 1) * myu)
+  mat_inverse = (-ginv(trained_model$hessian)[1:3,1:3]/dim(data)[1])
+  varbeta1 = mat_inverse[2,2]
+  covbeta1lambda = mat_inverse[2,3]
+  varlambda = mat_inverse[3,3]
+  standard_deviation = sqrt(median_effect ^ 2 * (varbeta1 / beta1 ^ 2 + 2 * myu * covbeta1lambda / beta1 + myu ^ 2 * varlambda))
+
+  lower_ci = median_effect - 2 * standard_deviation
+  upper_ci = median_effect + 2 * standard_deviation
+
+  return_vec = c(median_effect, lower_ci, upper_ci)
+  names(return_vec) = c("median effect", "lower 95% ci", "upper 95% ci")
+  return_vec
 }
 
 #' @importFrom stats terms
@@ -57,7 +76,7 @@ get_processed_data = function(formula, data, weight_column_name){
 
   for (idx in 3:length(variables)){
     var_name = var_name_list[idx-1]
-    if (class(variables[[idx]]) == "factor"){
+    if (is.factor(variables[[idx]])){
       iZZ = add1hot_encoding(iZZ, variables[[idx]], var_name)
     } else {
       iZZ[var_name] = variables[[idx]]
